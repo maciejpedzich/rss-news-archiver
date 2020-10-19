@@ -1,9 +1,14 @@
 import Vue from 'vue';
-import App from './App.vue';
-import router from './router';
+
+import VueFilterDateFormat from '@vuejs-community/vue-filter-date-format';
 import vuetify from './plugins/vuetify';
 
+import App from './App.vue';
+import router from './router';
+
 Vue.config.productionTip = false;
+
+Vue.use(VueFilterDateFormat);
 
 new Vue({
   router,
