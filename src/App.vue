@@ -28,13 +28,18 @@
     <v-toolbar-title>F1 News Aggregator</v-toolbar-title>
     <v-spacer></v-spacer>
     <v-app-bar-nav-icon
-      v-if="['xs', 'sm'].includes($vuetify.breakpoint.name)"
+      v-if="isMobile"
       @click="drawer = !drawer">
     </v-app-bar-nav-icon>
   </v-app-bar>
   <v-main class="mx-4 my-3">
     <router-view></router-view>
   </v-main>
+  <v-footer color="primary" inset app>
+    <span class="white--text">
+      &copy; Maciej Pędzich, 2020
+    </span>
+  </v-footer>
 </v-app>
 </template>
 
@@ -46,6 +51,7 @@ export default Vue.extend({
 
   data() {
     return {
+      isMobile: ['xs', 'sm'].includes(this.$vuetify.breakpoint.name),
       drawer: ['md', 'lg', 'xl'].includes(
         this.$vuetify.breakpoint.name,
       ),
