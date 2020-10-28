@@ -13,7 +13,7 @@ export default class Article {
   @CreateDateColumn()
   dateArchived!: Date;
 
-  @Column('date', { nullable: false })
+  @Column('timestamp', { nullable: false })
   datePublished!: Date;
 
   @Column('text', { nullable: false })
