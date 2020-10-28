@@ -28,7 +28,7 @@ async function onTick() {
       title,
       link,
       guid,
-      pubDate,
+      isoDate,
       contentSnippet,
       enclosure
     } = item;
@@ -41,7 +41,7 @@ async function onTick() {
         title,
         link,
         guid,
-        datePublished: pubDate,
+        datePublished: new Date(isoDate as string).toISOString(),
         description: contentSnippet?.replace('Keep reading', '')
       });
 
