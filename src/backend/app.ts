@@ -4,6 +4,9 @@ import 'reflect-metadata';
 import { createConnection } from 'typeorm';
 import { config as loadENV } from 'dotenv';
 
+import ArticlesController from './controllers/articles';
+import errorMiddleware from './middleware/error';
+
 import Article from './models/article';
 import archiveJob from './cronjob';
 
@@ -23,8 +26,12 @@ const app = express();
     });
 
     app.use(cors());
-    app.use(express.static('public'));
+    app.use(express.static(`${__dirname}/public`));
     app.use(express.json());
+
+    app.use('/articles', new ArticlesController().router);
+
+    app.use(errorMiddleware);
 
     app.listen(process.env.PORT, () => archiveJob.start());
   } catch (error) {
